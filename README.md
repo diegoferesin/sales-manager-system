@@ -388,25 +388,45 @@ Multiple analysis algorithms are available:
 - [ ] Advanced visualization and reporting
 - [ ] Monitoring and alerting systems
 
-## Testing Strategy
+## Testing
 
-The project includes comprehensive testing covering:
+The project includes a comprehensive test suite using pytest and coverage reporting:
 
-### Unit Tests
-- **Design Patterns**: Validation of pattern implementations
-- **Model Validation**: Data integrity and business logic
-- **Query Building**: SQL generation and validation
-- **Analysis Algorithms**: Statistical accuracy and edge cases
+### Running Tests
 
-### Integration Tests
-- **Database Operations**: Connection, query execution, transaction handling
-- **Pattern Interactions**: Multiple patterns working together
-- **End-to-End Workflows**: Complete analysis pipelines
+```bash
+# Run all tests with coverage
+./run_tests.sh
 
-### Performance Tests
-- **Query Performance**: Execution time monitoring
-- **Memory Usage**: Resource optimization validation
-- **Concurrency**: Multi-user scenario testing
+# Or run tests manually
+python -m pytest tests/
+```
+
+### Test Coverage
+
+The test suite aims to maintain at least 80% code coverage. Coverage reports are generated in:
+- Terminal output (missing lines)
+- HTML report (htmlcov/index.html)
+
+### Test Categories
+
+1. **Database Tests**
+   - Connection management
+   - Query execution
+   - Transaction handling
+   - Singleton pattern verification
+
+2. **Model Tests**
+   - Product creation and validation
+   - Customer creation and validation
+   - Sale creation and validation
+   - Store creation and validation
+
+3. **SQL Object Tests**
+   - Function execution
+   - Trigger creation and execution
+   - Stored procedure execution
+   - View creation and querying
 
 ## Security & Best Practices
 
