@@ -249,6 +249,73 @@ The system implements a comprehensive data model with robust validation and flex
    - sale_date (DATE NOT NULL)
    - transaction_number (VARCHAR(50) NOT NULL)
 
+## SQL Objects
+
+The system implements various SQL objects to enhance database functionality and performance:
+
+### 1. Functions
+- **calculate_discount**: Calculates final price after applying discounts
+- **get_customer_lifetime_value**: Computes total customer spending
+- **calculate_product_profit**: Determines product profitability
+- **get_sales_trend**: Analyzes sales trends over time
+
+### 2. Triggers
+- **update_inventory**: Automatically updates inventory after sales
+- **log_price_changes**: Tracks product price modifications
+- **validate_sale_date**: Ensures sales dates are valid
+- **update_customer_stats**: Maintains customer statistics
+
+### 3. Stored Procedures
+- **generate_sales_report**: Creates comprehensive sales reports
+- **process_daily_sales**: Handles daily sales processing
+- **update_product_categories**: Manages product categorization
+- **calculate_monthly_metrics**: Computes monthly performance metrics
+
+### 4. Views
+- **sales_summary**: Aggregated sales data
+- **customer_purchase_history**: Customer buying patterns
+- **product_performance**: Product sales metrics
+- **employee_sales_stats**: Sales performance by employee
+
+### 5. Indexes
+- **idx_sales_date**: Optimizes date-based queries
+- **idx_product_category**: Improves category filtering
+- **idx_customer_name**: Enhances customer name searches
+- **idx_sales_amount**: Speeds up amount-based queries
+
+### Usage Examples
+
+```sql
+-- Function Example
+SELECT calculate_discount(100.00, 0.15) as final_price;
+
+-- Trigger Example
+CREATE TRIGGER update_inventory
+AFTER INSERT ON sales
+FOR EACH ROW
+BEGIN
+    UPDATE products 
+    SET stock = stock - NEW.quantity 
+    WHERE product_id = NEW.product_id;
+END;
+
+-- Stored Procedure Example
+CALL generate_sales_report('2024-01-01', '2024-03-31');
+
+-- View Example
+SELECT * FROM sales_summary 
+WHERE sale_date >= '2024-01-01';
+
+-- Index Example
+CREATE INDEX idx_sales_date ON sales(sale_date);
+```
+
+These SQL objects are demonstrated in the Python module through the `SQLObjectsDemo` class, which provides methods to:
+- Create and manage all SQL objects
+- Execute and test their functionality
+- Monitor performance and usage
+- Maintain and update as needed
+
 ## Advanced Features
 
 ### SQL Query Builder with Advanced Capabilities
